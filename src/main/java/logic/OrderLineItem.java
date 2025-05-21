@@ -1,0 +1,37 @@
+package logic;
+
+public class OrderLineItem implements Comparable<OrderLineItem> {
+
+    private final int id;
+    private int itemID;
+    private int quantity;
+    
+    public OrderLineItem() {
+        this.id = -1;
+        this.itemID = -1;
+        this.quantity = -1;
+    }
+    public OrderLineItem(int id, int itemID, int quantity) {
+        this.id = id;
+        this.itemID = itemID;
+        this.quantity = quantity;
+    }
+
+    public void setItemID(int itemID) {
+        this.itemID = itemID;
+    }
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    public int getItemID() {
+        return itemID;
+    }
+    public int getQuantity() {
+        return quantity;
+    }
+
+    @Override
+    public int compareTo(OrderLineItem o) {
+        return Integer.compare(id, o.id);
+    }
+}

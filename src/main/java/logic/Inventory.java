@@ -14,14 +14,14 @@ final class InventorySort implements Comparator<InventoryItem> {
 
 public class Inventory {
     
-    private final TreeMap<String, InventoryItem> inventory = new TreeMap<>();
+    private final TreeMap<Integer, InventoryItem> inventory = new TreeMap<>();
     //private final LinkedList<InventoryItem> inventorySorted = new LinkedList<>();
 
     public void addItem(InventoryItem item) {
-        inventory.put(item.getName(), item);
+        inventory.put(item.getID(), item);
     }
     public void removeItem(InventoryItem item) {
-        inventory.remove(item.getName());
+        inventory.remove(item.getID());
     }
     public Collection<InventoryItem> getInventory() {
         return inventory.values();
