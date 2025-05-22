@@ -1,21 +1,13 @@
 package logic;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.TreeMap;
-
-/* 
-final class InventorySort implements Comparator<InventoryItem> {
-
-    @Override
-    public int compare(InventoryItem o1, InventoryItem o2) {
-        return o1.getName().compareTo(o2.getName());
-    }
-} */
 
 public class Inventory {
     
     private final TreeMap<Integer, InventoryItem> inventory = new TreeMap<>();
-    //private final LinkedList<InventoryItem> inventorySorted = new LinkedList<>();
+    private final ArrayList<Order> orders = new ArrayList<>();
 
     public void addItem(InventoryItem item) {
         inventory.put(item.getID(), item);
@@ -23,20 +15,35 @@ public class Inventory {
     public void removeItem(InventoryItem item) {
         inventory.remove(item.getID());
     }
-    public Collection<InventoryItem> getInventory() {
-        return inventory.values();
+    public void addOrder(Order order) {
+        order.setInventory(this);
+        orders.add(order);
+    }
+    public void removeOrder(int index) {
+        orders.remove(index);
+    }
+    public TreeMap<Integer, InventoryItem> getInventory() {
+        return inventory;
+    }
+    public Collection<Order> getOrders() {
+        return orders;
     }
 
-    /* 
-    public void sortByName() {
-        InventorySort sorter = new InventorySort();
-        sort(sorter);
+    @Override
+    public String toString() {
+        String result = "Inventory\n";
+        result += "===============\n";
+        for(int i = 0; i == orders.toArray().length; i++) {
+            result += "Order #" + i +"\n";
+            result += orders.get(i).toString() + "\n";
+        }
+        result += "===============\n\n";
+        result += "Orders:\n\n";
+        for(int i = 0; i == orders.toArray().length; i++) {
+            result += "Order #" + i +"\n";
+            result += orders.get(i).toString() + "\n";
+        }
+        return result;
     }
-
-    private void sort(Comparator<InventoryItem> comp) {
-        inventorySorted.clear();
-        inventorySorted.addAll(inventory.values());
-        inventorySorted.sort(comp);
-    } */
 
 }

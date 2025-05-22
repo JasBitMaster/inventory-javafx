@@ -54,6 +54,10 @@ public class InventoryItem implements Comparable<InventoryItem> {
     }
 
     @Override
+    public String toString() {
+        return name + ", " + quality + " Grade X" + stock;
+    }
+    @Override
     public int compareTo(InventoryItem o) {
         return this.name.compareTo(o.name);
     }

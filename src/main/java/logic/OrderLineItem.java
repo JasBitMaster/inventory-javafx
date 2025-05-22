@@ -3,6 +3,7 @@ package logic;
 public class OrderLineItem implements Comparable<OrderLineItem> {
 
     private final int id;
+    private Inventory inventory;
     private int itemID;
     private int quantity;
     
@@ -23,6 +24,9 @@ public class OrderLineItem implements Comparable<OrderLineItem> {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
     public int getItemID() {
         return itemID;
     }
@@ -30,6 +34,13 @@ public class OrderLineItem implements Comparable<OrderLineItem> {
         return quantity;
     }
 
+    @Override
+    public String toString() {
+        String result = inventory.getInventory().get(id).getName();
+        result += ", " + inventory.getInventory().get(id).getQuality() + " Grade";
+        result += "X" + quantity;
+        return result;
+    }
     @Override
     public int compareTo(OrderLineItem o) {
         return Integer.compare(id, o.id);
